@@ -5,6 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "nodemon": "nodemon node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "sadiq.org",
@@ -13,5 +14,14 @@
     "express": "^4.18.1",
     "mongodb": "^4.8.1",
     "nodemon": "^2.0.19"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sadiq-x/Globalrides.lda.git"
+  },
+  "homepage": "https://github.com/sadiq-x/Globalrides.lda#readme"
 }
