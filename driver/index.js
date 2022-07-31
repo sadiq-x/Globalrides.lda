@@ -9,8 +9,7 @@ export default class Driver {
             mood: null,
             car: null,
             km: null,
-            data: null,
-            fuel: false //The value are always false, only when the driver change the value was be true                
+            data: null             
         }
     }
 

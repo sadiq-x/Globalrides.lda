@@ -41,5 +41,5 @@ import { startdrive } from '../endpoints/startdrive/index.js';
 app.post('/driver/startdrive', startdrive,(req, res) => {});
 
 import { finishdrive } from '../endpoints/finishdrive/index.js';
-app.post('/driver/finishdrive', finishdrive, (req,res) => {});
+app.post('finishdrive', finishdrive, (req,res) => {});
 main()

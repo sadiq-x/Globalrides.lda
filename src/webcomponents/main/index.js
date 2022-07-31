@@ -1,7 +1,8 @@
 class Mainbody extends HTMLElement {
     constructor(){
-        super()
-        this.attachShadow({mode:'open'})
+        super();
+        this.attachShadow({mode:'open'});
+        this.render();
 
     }
 
@@ -17,7 +18,20 @@ class Mainbody extends HTMLElement {
         return `
         <div id="principalDiv">
             <form id="driverinput">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name">
+            
+            <label for="mood">Mood</label>
+            <input type="text" name="mood" id="mood">
 
+            <label for="car">Car</label>
+            <input type="text" name="car" id="car">
+
+            <label for="km">Km</label>
+            <input type="text" name="km" id="km">
+
+            <label for="fuel">Fuel</label>
+            <input type="text" name="fuel" id="fuel">
             </form>
 
         </div>
@@ -28,6 +42,10 @@ class Mainbody extends HTMLElement {
     getStyles(){ //Styles template
         return `
         <style>
+
+        #driverinput {
+
+        }
 
         </style>
         `
