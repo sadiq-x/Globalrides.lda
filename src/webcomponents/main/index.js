@@ -1,55 +1,64 @@
+import './driverwork/index.js';
+import './fuelcars/index.js'
 class Mainbody extends HTMLElement {
-    constructor(){
+    constructor() {
         super();
-        this.attachShadow({mode:'open'});
+        this.attachShadow({ mode: 'open' });
         this.render();
 
     }
 
-    connectedCallback(){
-
+    connectedCallback() {
+        const DriverWork = document.createElement('driver-work')
+        const FuelCars = document.createElement('fuel-cars')
+        const divOper = this.shadowRoot.querySelector("#operdiv")
+        divOper.appendChild(DriverWork)
+        divOper.appendChild(FuelCars)
     }
 
-    render(){
+    render() {
         this.shadowRoot.innerHTML = this.getTemplate()
     }
 
-    getTemplate(){ //Template of component
+    getTemplate() { //Template of component
         return `
-        <div id="principalDiv">
-            <form id="driverinput">
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name">
-            
-            <label for="mood">Mood</label>
-            <input type="text" name="mood" id="mood">
-
-            <label for="car">Car</label>
-            <input type="text" name="car" id="car">
-
-            <label for="km">Km</label>
-            <input type="text" name="km" id="km">
-
-            <label for="fuel">Fuel</label>
-            <input type="text" name="fuel" id="fuel">
-            </form>
-
+        <div id="divmain">
+            <div id="navbar">
+                <a href="">Drivers</a>
+                <a href="">Cars and fuel</a>
+            </div>
+            <div id="operdiv">
+            </div>
         </div>
         ${this.getStyles()}
         `
     }
 
-    getStyles(){ //Styles template
+    getStyles() { //Styles template
         return `
         <style>
 
-        #driverinput {
-
+        a {
+            background-color: white;
+            text-decoration: none;
+            border: 1px solid black;
+            padding: 10px;
+            margin: 3px;
+            color: black;
         }
+
+        #navbar {
+            margin-top: 8px;
+        }
+
+        #operdiv {
+            margin-top: 25px;
+        }
+        
 
         </style>
         `
     }
 }
 
-customElements.define('main-body', Mainbody);
+customElements.define('site-body', Mainbody);
