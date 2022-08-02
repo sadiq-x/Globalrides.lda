@@ -9,27 +9,33 @@ class DriverWork extends HTMLElement {
         const form = this.shadowRoot.querySelector("#driver-input")
         const btform = this.shadowRoot.querySelector("#btformsend")
 
-        const simopt = this.shadowRoot.querySelector("#optSim")
-        const naoopt = this.shadowRoot.querySelector("#optNao")
-
         const divsimopt = this.shadowRoot.querySelector("#divSimopt")
+        const moodslc = this.shadowRoot.querySelector("#mood")
         
         const url = '';
         let body;
-        let select = false;
+
+        moodslc.addEventListener('click', (e)=> {
+            e.preventDefault()
+            if (moodslc.value === 'start'){
+                divsimopt.style.display = 'none';
+            }else if (moodslc.value === 'finish'){
+                divsimopt.style.display = 'block';
+            }
+        })
 
         btform.addEventListener('click', (e) => {
             e.preventDefault()
             e.stopImmediatePropagation()
 
-            if (!select) {
+            if (moodslc.value === 'start') {
                 body = {
                     name: form.querySelector("#name").value,
                     mood: form.querySelector("#mood").value,
                     car: form.querySelector("#car").value,
                     km: form.querySelector("#km").value
                 }
-            } else {
+            } else if(moodslc.value === 'finish') {
                 body = {
                     name: form.querySelector("#name").value,
                     mood: form.querySelector("#mood").value,
@@ -46,20 +52,14 @@ class DriverWork extends HTMLElement {
                 }
             }
 
-            console.log(body)
+            if (body.name && body.km){
+                console.log(body)
+            }else{
+                alert('Formulario incompleto')
+            }
+
+            form.reset()
         })
-
-        simopt.addEventListener('click', (e) => {
-            divsimopt.style.display = 'block';
-            select = true;
-
-        })
-
-        naoopt.addEventListener('click', (e) => {
-            divsimopt.style.display = 'none';
-            select = false;
-        })
-
     }
 
     disconnectedcallback() {
@@ -74,7 +74,7 @@ class DriverWork extends HTMLElement {
         return `
         <div>
             <form id="driver-input">
-                <label for="name">Name</label>
+                <label for="name">Numero</label>
                 <input type="text" name="name" id="name" placeholder="Your name...">
 
                 <label for="mood">Mood</label>
@@ -86,16 +86,12 @@ class DriverWork extends HTMLElement {
                 <label for="car">Car</label>
                 <select type="text" name="car" id="car">
                     <option value="88-59-po">88-59-PO</option>
+                    <option value="88-59-po">88-59-PO</option>
                 </select>
 
                 <label for="km">Km</label>
                 <input type="text" name="km" id="km" placeholder="Km atuais...">
 
-                <label for="money">Money</label>
-                <select id=selectmoney">
-                    <option id="optNao">Não</oprion>
-                    <option id="optSim">Sim</option>
-                </select>
                 <div id="divSimopt">
                     <label for="uberM">Uber</label>
                     <input type="text" name="uberM" id="uberM" placeholder="Uber money...">

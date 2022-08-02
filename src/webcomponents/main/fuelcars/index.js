@@ -20,7 +20,13 @@ class FuelCars extends HTMLElement {
                 litre: form.querySelector("#litre").value,
                 valor: form.querySelector("#money").value
             }
-            console.log(body)
+
+            if (body.litre && body.valor){
+                console.log(body)
+            }else{
+                alert('Formulario incompleto')
+            }
+
             form.reset()
         })
     }
