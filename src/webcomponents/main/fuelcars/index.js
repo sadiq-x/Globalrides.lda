@@ -5,6 +5,26 @@ class FuelCars extends HTMLElement {
         this.render();
     }
 
+    connectedCallback() {
+        const btform = this.shadowRoot.querySelector("#btformsend")
+        const form = this.shadowRoot.querySelector("#fuelcars")
+
+        const url = '';
+        let body;
+
+        btform.addEventListener('click', (e)=> {
+            e.preventDefault()
+            e.stopImmediatePropagation()
+            body = {
+                car: form.querySelector("#car").value,
+                litre: form.querySelector("#litre").value,
+                valor: form.querySelector("#money").value
+            }
+            console.log(body)
+            form.reset()
+        })
+    }
+
     render(){
         this.shadowRoot.innerHTML = this.getTemplate();
     }
@@ -27,7 +47,7 @@ class FuelCars extends HTMLElement {
                 <input type="text" name="money" id="money" placeholder="Dinheiro gasto...">
 
             </form>
-            <input type="button" value="Go" id="btformsend">
+            <input type="button" value="Send" id="btformsend">
         </div>
         ${this.getStyles()}
         `

@@ -11,9 +11,21 @@ class Mainbody extends HTMLElement {
     connectedCallback() {
         const DriverWork = document.createElement('driver-work')
         const FuelCars = document.createElement('fuel-cars')
-        const divOper = this.shadowRoot.querySelector("#operdiv")
-        divOper.appendChild(DriverWork)
-        divOper.appendChild(FuelCars)
+        const webcompdiv = this.shadowRoot.querySelector("#webcompdiv")
+        const driveropt = this.shadowRoot.querySelector("#dA")
+        const carfuelopt = this.shadowRoot.querySelector("#cfA")
+        
+        driveropt.addEventListener('click', (e)=>{
+            e.preventDefault()
+            webcompdiv.removeChild(webcompdiv.lastChild)
+            webcompdiv.appendChild(DriverWork)
+        })
+
+        carfuelopt.addEventListener('click', (e)=> {
+            e.preventDefault()
+            webcompdiv.removeChild(webcompdiv.lastChild)
+            webcompdiv.appendChild(FuelCars)
+        })
     }
 
     render() {
@@ -24,10 +36,10 @@ class Mainbody extends HTMLElement {
         return `
         <div id="divmain">
             <div id="navbar">
-                <a href="">Drivers</a>
-                <a href="">Cars and fuel</a>
+                <a href="" id="dA">Drivers</a>
+                <a href="" id="cfA">Cars and fuel</a>
             </div>
-            <div id="operdiv">
+            <div id="webcompdiv">
             </div>
         </div>
         ${this.getStyles()}
@@ -51,7 +63,7 @@ class Mainbody extends HTMLElement {
             margin-top: 8px;
         }
 
-        #operdiv {
+        #webcompdiv {
             margin-top: 25px;
         }
         
