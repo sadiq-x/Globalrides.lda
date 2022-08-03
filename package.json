@@ -1,0 +1,24 @@
+{
+  "name": "globalride-analytsapi",
+  "version": "1.0.0",
+  "description": "Global Ride analyts drivers Api!\r To Jose.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sadiq-x/Globalrides.lda.git"
+  },
+  "author": "sadiq.org",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sadiq-x/Globalrides.lda/issues"
+  },
+  "homepage": "https://github.com/sadiq-x/Globalrides.lda#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongodb": "^4.8.1",
+    "nodemon": "^2.0.19"
+  }
+}
