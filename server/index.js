@@ -38,8 +38,18 @@ app.use('/drivers', (req, res) => {
 })
 
 import { startdrive } from '../endpoints/startdrive/index.js';
-app.post('/driver/startdrive', startdrive,(req, res) => {});
+app.post('/driver/startdrive', startdrive,(req, res) => {
+
+});
 
 import { finishdrive } from '../endpoints/finishdrive/index.js';
-app.post('finishdrive', finishdrive, (req,res) => {});
+app.post('/driver/finishdrive', finishdrive, (req,res) => {
+
+});
+
+import { fuelcar } from '../endpoints/fuelcar/index.js';
+app.post('/driver/fuelcar', fuelcar,(req,res)=> {
+
+})
+
 main()

@@ -12,14 +12,16 @@ class DriverWork extends HTMLElement {
         const divsimopt = this.shadowRoot.querySelector("#divSimopt")
         const moodslc = this.shadowRoot.querySelector("#mood")
         
-        const url = '';
+        let url = 'http://127.0.0.1:9000/driver/startdrive';
         let body;
 
         moodslc.addEventListener('click', (e)=> {
             e.preventDefault()
             if (moodslc.value === 'start'){
+                url = 'http://127.0.0.1:9000/driver/startdrive'
                 divsimopt.style.display = 'none';
             }else if (moodslc.value === 'finish'){
+                url = 'http://127.0.0.1:9000/driver/finishdrive'
                 divsimopt.style.display = 'block';
             }
         })
@@ -31,6 +33,7 @@ class DriverWork extends HTMLElement {
             if (moodslc.value === 'start') {
                 body = {
                     name: form.querySelector("#name").value,
+                    numbero: form.querySelector("#idnumber"),
                     mood: form.querySelector("#mood").value,
                     car: form.querySelector("#car").value,
                     km: form.querySelector("#km").value
@@ -38,6 +41,7 @@ class DriverWork extends HTMLElement {
             } else if(moodslc.value === 'finish') {
                 body = {
                     name: form.querySelector("#name").value,
+                    numbero: form.querySelector("#idnumber"),
                     mood: form.querySelector("#mood").value,
                     car: form.querySelector("#car").value,
                     km: form.querySelector("#km").value,
@@ -51,13 +55,17 @@ class DriverWork extends HTMLElement {
                     }
                 }
             }
-
             if (body.name && body.km){
-                console.log(body)
+                fetch(url, {
+                    method: "POST",
+                    headers: new Headers({"Content-Type": "application/json"}),
+                    body: JSON.stringify(body)
+                }).then((e)=>{
+                    console.log(e)
+                })
             }else{
                 alert('Formulario incompleto')
             }
-
             form.reset()
         })
     }
@@ -74,8 +82,11 @@ class DriverWork extends HTMLElement {
         return `
         <div>
             <form id="driver-input">
-                <label for="name">Numero</label>
+                <label for="name">Nome</label>
                 <input type="text" name="name" id="name" placeholder="Your name...">
+
+                <label for="idnumber">Numero pessoal</label>
+                <input type="text" name="idnumber" id="idnumber" placeholder="Your name...">
 
                 <label for="mood">Mood</label>
                 <select name="mood" id="mood" >

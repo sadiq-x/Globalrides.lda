@@ -1,8 +1,7 @@
 import { getClient } from "../data/index.js";
-let collection;
 
 export default class Driver {
-    /**The constructor are univelsar that for start or finish drives*/
+    /**The constructor are universal that for start or finish drives*/
     constructor() {
         this.doc = {
             name: null,
@@ -33,8 +32,11 @@ export default class Driver {
             let user = this.doc.name
             let collection = getClient().collection(user)
             const result = await collection.insertOne(this.doc)
-            console.log(collection)
-            return (true)
+            if (result.insertedId){
+                return true
+            }else {
+                return false
+            }
         }else{
             return false
         }

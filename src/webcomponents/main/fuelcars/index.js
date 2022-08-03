@@ -9,7 +9,7 @@ class FuelCars extends HTMLElement {
         const btform = this.shadowRoot.querySelector("#btformsend")
         const form = this.shadowRoot.querySelector("#fuelcars")
 
-        const url = '';
+        const url = 'http://127.0.0.1:9000/driver/fuelcar';
         let body;
 
         btform.addEventListener('click', (e)=> {
@@ -17,16 +17,19 @@ class FuelCars extends HTMLElement {
             e.stopImmediatePropagation()
             body = {
                 car: form.querySelector("#car").value,
-                litre: form.querySelector("#litre").value,
-                valor: form.querySelector("#money").value
+                litre: form.querySelector("#litre").value
             }
-
-            if (body.litre && body.valor){
-                console.log(body)
+            if (body.litre){
+                fetch(url, {
+                    method: "POST",
+                    headers: new Headers({"Content-Type": "application/json"}),
+                    body: JSON.stringify(body) 
+                }).then((e)=>{
+                    console.log(e)
+                })
             }else{
                 alert('Formulario incompleto')
             }
-
             form.reset()
         })
     }
@@ -48,9 +51,6 @@ class FuelCars extends HTMLElement {
 
                 <label for="litre">Litre</label>
                 <input type="text" name="litre" id="litre" placeholder="Quantidade de litros...">
-
-                <label for="money">Valor</label>
-                <input type="text" name="money" id="money" placeholder="Dinheiro gasto...">
 
             </form>
             <input type="button" value="Send" id="btformsend">
