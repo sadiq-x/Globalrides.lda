@@ -7,7 +7,7 @@ import { database } from '../data/index.js';
 
 import fs from 'fs';
 const templateHTML = fs.readFileSync('./src/index.html', 'utf-8');
-app.use(expres.static('./src'));
+app.use(expres.static('./src/'));
 app.use(expres.json())
 
 async function main() {
@@ -28,20 +28,14 @@ function server() {
 }
 
 //Endpoints
-
-app.use('/analytics', (req, res) => {
+app.get('/analytics', (req, res,) => {
     let view = templateHTML
     res.send(view)
 })
 
+app.post('/analytics/car', (req, res)=> {
+    console.log(req.body, 'ok')
+    res.send('ok')
+})
 
-
-
-
-
-
-
-
-
-
-main()
+main();
