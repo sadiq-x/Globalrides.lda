@@ -1,9 +1,11 @@
 {
   "name": "globalride-analytsapi",
+  "type": "module",
   "version": "1.0.0",
   "description": "Global Ride analyts drivers Api!\r To Jose.",
   "main": "index.js",
   "scripts": {
+    "nodemon": "nodemon node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
