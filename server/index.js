@@ -33,9 +33,13 @@ app.get('/analytics', (req, res,) => {
     res.send(view)
 })
 
-app.post('/analytics/car', (req, res)=> {
-    console.log(req.body, 'ok')
-    res.send('ok')
-})
+import { getCar } from '../endpoints/getCar/index.js';
+app.post('/analytics/car', getCar);
+
+import { getDriver } from '../endpoints/getDriver/index.js';
+app.post('/analytics/driver', getDriver);
+
+import { getKmCar } from '../endpoints/getKmCar/index.js';
+app.post('/analytics/car/km', getKmCar);
 
 main();
