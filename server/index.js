@@ -33,6 +33,8 @@ app.get('/analytics', (req, res,) => {
     res.send(view)
 })
 
+//
+
 import { getCar } from '../endpoints/getCar/index.js';
 app.post('/analytics/car', getCar);
 

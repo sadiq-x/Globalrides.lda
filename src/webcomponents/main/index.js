@@ -1,4 +1,6 @@
-
+import './carview-dacia/index.js';
+import './carview-renault/index.js';
+import './navbar/index.js'
 
 class SiteBody extends HTMLElement{
     constructor(){
@@ -7,7 +9,19 @@ class SiteBody extends HTMLElement{
         this.render()
     }
 
-    connectedCallback(){}
+    connectedCallback(){
+        const navbar = this.shadowRoot.querySelector("#navbarbody")
+
+        const Drivernavbar = navbar.shadowRoot.querySelector("#driver")
+        const Vnavbar = navbar.shadowRoot.querySelector("#viaturas")
+        const Despesaspnavbar = navbar.shadowRoot.querySelector("#despesas")
+        const Tnavbar = navbar.shadowRoot.querySelector("#test")
+
+        Drivernavbar.addEventListener('click', (e)=>{
+            e.preventDefault()
+        })
+
+    }
 
     render(){
         this.shadowRoot.innerHTML = this.getTemplate()
@@ -16,7 +30,12 @@ class SiteBody extends HTMLElement{
     getTemplate(){
         return `
         <div>
-        <h1> test </h1>
+        <ul id="carcomponents">
+            <li> <carview-dacia> </carview-dacia> </li>
+            <li> <carview-renault> </carview-renault> </li>
+        </ul>
+        <navbar-body id="navbarbody"> </navbar-body>
+        
         </div>
         ${this.getStyle()}
         `
@@ -25,6 +44,10 @@ class SiteBody extends HTMLElement{
     getStyle(){
         return `
         <style>
+
+        #carcomponents li {
+            display: inline-block;
+        }
 
         </style>
         `

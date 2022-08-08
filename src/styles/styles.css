@@ -12,9 +12,17 @@ header {
     border: 1px solid black;
 }
 
-body {
+main {
     margin-top: 5px;
     margin-left: 10%;
     margin-right: 10%;
+    margin-bottom: 25px;
     text-align: center;
+}
+
+footer {
+    padding: 10px;
+    background-color: gray;
+    text-align: center;
+    border: 1px solid black;
 }
