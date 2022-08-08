@@ -19,6 +19,19 @@ class SiteBody extends HTMLElement{
 
         Drivernavbar.addEventListener('click', (e)=>{
             e.preventDefault()
+            alert('ok')
+        })
+
+        Vnavbar.addEventListener('click', (e)=> {
+            e.preventDefault()
+        })
+
+        Despesaspnavbar.addEventListener('click', (e)=>{
+            e.preventDefault()
+        })
+
+        Tnavbar.addEventListener('click', (e)=>{
+            
         })
 
     }

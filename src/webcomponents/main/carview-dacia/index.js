@@ -1,19 +1,42 @@
 class CarviewRenault extends HTMLElement {
-    constructor(){
+    constructor() {
         super();
-        this.attachShadow({mode:'open'});
+        this.attachShadow({ mode: 'open' });
         this.render()
     }
 
-    connectedCallback(){
+    async connectedCallback() {
+        let kmreload = this.shadowRoot.querySelector("#kmreload")
+        const btnreload = this.shadowRoot.querySelector("#btnreload")
         
+        const url = '';
+        const body = {
+            car: 'dacialogdy'
+        }
+
+        kmreload.textContent = await this.getKm(url,body)
+
+        btnreload.addEventListener('click', (e) => {
+            e.preventDefault()
+            //alert('reload')
+            kmreload.textContent = this.getKm(url,body)
+        })
+
     }
 
-    render(){
+    async getKm(url, body) {
+        return fetch(url, {
+            method: "POST",
+            headers: new Headers({ 'Content-Type': 'application/json' }),
+            body: JSON.stringify(body)
+        }).then( async response => { return response.json().then((e)=>{return e}) })
+    }
+
+    render() {
         this.shadowRoot.innerHTML = this.getTemplate()
     }
 
-    getTemplate(){
+    getTemplate() {
         return `
         <div>
        
@@ -24,18 +47,25 @@ class CarviewRenault extends HTMLElement {
                 <li>XX-XX-XX</li> 
             </ul>
             <ul id="listkm">
-                <li>123445 </li>
+                <li id="kmreload">awaiting</li>
                 <li>Km</li>
+            </ul>
+            <ul>
+            <a href="" id="btnreload"> <img src="./images/refreshicon_webcomponent.png" widht="25" height="25" id="imgreload"> </a>
             </ul>
         </div>
         ${this.getStyles()}
         `
     }
 
-    getStyles(){
+    getStyles() {
         return `
         <style>
         
+        #imgreload:hover {
+            transform: rotate(-180deg);
+        }
+
         #listcar li {
             display: inline-block;
             margin-right: 10px;
