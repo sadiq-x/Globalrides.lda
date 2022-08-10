@@ -14,7 +14,7 @@ class CarviewRenault extends HTMLElement {
             car: 'renaultscenic'
         }
 
-        kmreload.textContent = await this.getKm(url,body)
+        //kmreload.textContent = await this.getKm(url,body)
 
         btnreload.addEventListener('click', (e) => {
             e.preventDefault()

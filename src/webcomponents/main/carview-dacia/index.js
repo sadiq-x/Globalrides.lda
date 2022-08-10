@@ -14,11 +14,11 @@ class CarviewRenault extends HTMLElement {
             car: 'dacialogdy'
         }
 
-        kmreload.textContent = await this.getKm(url,body)
+        //kmreload.textContent = await this.getKm(url,body)
 
         btnreload.addEventListener('click', (e) => {
-            e.preventDefault()
-            //alert('reload')
+            e.preventDefault();
+            alert('reload')
             kmreload.textContent = this.getKm(url,body)
         })
 
@@ -51,7 +51,7 @@ class CarviewRenault extends HTMLElement {
                 <li>Km</li>
             </ul>
             <ul>
-            <a href="" id="btnreload"> <img src="./images/refreshicon_webcomponent.png" widht="25" height="25" id="imgreload"> </a>
+                <a href="" id="btnreload"> <img src="./images/refreshicon_webcomponent.png" widht="25" height="25" id="imgreload"> </a>
             </ul>
         </div>
         ${this.getStyles()}

@@ -1,6 +1,7 @@
 import './carview-dacia/index.js';
 import './carview-renault/index.js';
 import './navbar/index.js'
+import './driver/index.js'
 
 class SiteBody extends HTMLElement{
     constructor(){
@@ -48,7 +49,7 @@ class SiteBody extends HTMLElement{
             <li> <carview-renault> </carview-renault> </li>
         </ul>
         <navbar-body id="navbarbody"> </navbar-body>
-        
+        <driver-component> </driver-component>
         </div>
         ${this.getStyle()}
         `
