@@ -16,7 +16,6 @@ class SiteBody extends HTMLElement{
         const Drivernavbar = navbar.shadowRoot.querySelector("#driver")
         const Vnavbar = navbar.shadowRoot.querySelector("#viaturas")
         const Despesaspnavbar = navbar.shadowRoot.querySelector("#despesas")
-        const Tnavbar = navbar.shadowRoot.querySelector("#test")
 
         Drivernavbar.addEventListener('click', (e)=>{
             e.preventDefault()
@@ -30,11 +29,7 @@ class SiteBody extends HTMLElement{
         Despesaspnavbar.addEventListener('click', (e)=>{
             e.preventDefault()
         })
-
-        Tnavbar.addEventListener('click', (e)=>{
-            
-        })
-
+        
     }
 
     render(){
@@ -48,8 +43,13 @@ class SiteBody extends HTMLElement{
             <li> <carview-dacia> </carview-dacia> </li>
             <li> <carview-renault> </carview-renault> </li>
         </ul>
+        
         <navbar-body id="navbarbody"> </navbar-body>
-        <driver-component> </driver-component>
+        
+        <div id="componentsoutput">
+            <driver-component> </driver-component>
+        </div>
+        
         </div>
         ${this.getStyle()}
         `
@@ -62,6 +62,14 @@ class SiteBody extends HTMLElement{
         #carcomponents li {
             display: inline-block;
         }
+
+        #navbarbody{
+            display: block;
+        }
+
+        #componentsoutput {
+            margin-top: 35px;
+        }        
 
         </style>
         `

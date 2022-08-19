@@ -9,17 +9,17 @@ class CarviewRenault extends HTMLElement {
         let kmreload = this.shadowRoot.querySelector("#kmreload")
         const btnreload = this.shadowRoot.querySelector("#btnreload")
         
-        const url = '';
+        const url = '/analytics/car/km';
         const body = {
             car: 'dacialogdy'
         }
 
-        //kmreload.textContent = await this.getKm(url,body)
+        kmreload.textContent = await this.getKm(url,body)
 
-        btnreload.addEventListener('click', (e) => {
+        btnreload.addEventListener('click', async (e) => {
             e.preventDefault();
-            alert('reload')
-            kmreload.textContent = this.getKm(url,body)
+            //alert('reload');
+            kmreload.textContent = await this.getKm(url,body)
         })
 
     }
@@ -29,7 +29,7 @@ class CarviewRenault extends HTMLElement {
             method: "POST",
             headers: new Headers({ 'Content-Type': 'application/json' }),
             body: JSON.stringify(body)
-        }).then( async response => { return response.json().then((e)=>{return e}) })
+        }).then( async response => { return response.json().then((e)=>{return e.Km}) })
     }
 
     render() {

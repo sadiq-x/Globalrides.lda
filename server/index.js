@@ -27,14 +27,13 @@ function server() {
     }
 }
 
-//Endpoints
-app.get('/analytics', (req, res,) => {
+//Template render
+app.get('/', (req, res,) => {
     let view = templateHTML
     res.send(view)
 })
 
-//
-
+//Endpoints
 import { getCar } from '../endpoints/getCar/index.js';
 app.post('/analytics/car', getCar);
 

@@ -19,12 +19,14 @@ export default class Analytics {
     async getdatadriver() {
         const driver = this.doc.driver
         const collection = await getClient().collection(driver)
-        let result = await collection.find({}).toArray()
+        let result = await collection.find().toArray({})
+        console.log(result)
         if (result) {
             return result
         } else {
             return false
         }
+        
     }
 
     async getdatacar() {

@@ -5,7 +5,8 @@ class NavbarBody extends HTMLElement {
         this.render()
     }
 
-
+    connectedCallback () {
+    }
 
     render(){
         this.shadowRoot.innerHTML = this.getTemplate()
@@ -28,7 +29,6 @@ class NavbarBody extends HTMLElement {
         <style>
 
         div {
-            display: inline;
             margin-left: 25%;
             margin-right: 25%;
         }
