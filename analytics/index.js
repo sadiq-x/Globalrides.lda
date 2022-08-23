@@ -20,7 +20,6 @@ export default class Analytics {
         const driver = this.doc.driver
         const collection = await getClient().collection(driver)
         let result = await collection.find().toArray({})
-        console.log(result)
         if (result) {
             return result
         } else {

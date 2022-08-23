@@ -17,17 +17,27 @@ class SiteBody extends HTMLElement{
         const Vnavbar = navbar.shadowRoot.querySelector("#viaturas")
         const Despesaspnavbar = navbar.shadowRoot.querySelector("#despesas")
 
+        const driverComponent = document.createElement('driver-component')
+
+        const componentsoutput = this.shadowRoot.querySelector("#componentsoutput")
+
+
         Drivernavbar.addEventListener('click', (e)=>{
             e.preventDefault()
-            alert('ok')
+            componentsoutput.removeChild(componentsoutput.lastChild)
+            componentsoutput.appendChild(driverComponent)
         })
 
         Vnavbar.addEventListener('click', (e)=> {
             e.preventDefault()
+            componentsoutput.removeChild(componentsoutput.lastChild)
+            componentsoutput.appendChild(driverComponent)
         })
 
         Despesaspnavbar.addEventListener('click', (e)=>{
             e.preventDefault()
+            componentsoutput.removeChild(componentsoutput.lastChild)
+            componentsoutput.appendChild(driverComponent)
         })
         
     }
@@ -47,7 +57,7 @@ class SiteBody extends HTMLElement{
         <navbar-body id="navbarbody"> </navbar-body>
         
         <div id="componentsoutput">
-            <driver-component> </driver-component>
+
         </div>
         
         </div>
