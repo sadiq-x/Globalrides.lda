@@ -62,9 +62,9 @@ class DriverComp extends HTMLElement {
             var cell = row.insertCell(-1);
             cell.innerHTML = "<b>Data</b>";
             var cell = row.insertCell(-1);
-            cell.innerHTML = "<b>Uber money</b>";
+            cell.innerHTML = "<b>Obs</b>";
             var cell = row.insertCell(-1);
-            cell.innerHTML = "<b>Uber portagem</b>";
+            cell.innerHTML = "<b>Uber money</b>";
             var cell = row.insertCell(-1);
             cell.innerHTML = "<b>Uber grojeta</b>";
             var cell = row.insertCell(-1);
@@ -98,6 +98,8 @@ class DriverComp extends HTMLElement {
                             
                         }else if(soloData.user[entry] === 'Finish'){
                             tabCell.style.backgroundColor = 'red'
+                        }else if(soloData.user[entry] === 'Pause'){
+                            tabCell.style.backgroundColor = 'yellow'
                         }
                         
                     }

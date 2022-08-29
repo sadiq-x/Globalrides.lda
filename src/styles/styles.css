@@ -3,11 +3,13 @@ html {
     width: 100%;
 }
 
+body {
+    background-color: FloralWhite;
+}
+
 header {
-    margin-left: 25%;
-    margin-right: 25%;
     padding: 10px;
-    background-color: gray;
+    background-color: Brown;
     text-align: center;
     border: 1px solid black;
 }
@@ -21,8 +23,12 @@ main {
 }
 
 footer {
-    padding: 10px;
-    background-color: gray;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%; 
+    padding: 18px;
+    background-color: Gainsboro;
     text-align: center;
     border: 1px solid black;
 }
