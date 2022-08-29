@@ -9,7 +9,7 @@ class FuelCars extends HTMLElement {
         const btform = this.shadowRoot.querySelector("#btformsend")
         const form = this.shadowRoot.querySelector("#fuelcars")
 
-        const url = 'http://127.0.0.1:9000/driver/fuelcar';
+        const url = 'driver/fuelcar';
         let body;
 
         btform.addEventListener('click', (e)=> {

@@ -12,17 +12,20 @@ class DriverWork extends HTMLElement {
         const divsimopt = this.shadowRoot.querySelector("#divSimopt")
         const moodslc = this.shadowRoot.querySelector("#mood")
         
-        let url = 'http://127.0.0.1:9000/driver/startdrive';
+        let url = '/driver/startdrive';
         let body;
 
         moodslc.addEventListener('click', (e)=> {
             e.preventDefault()
-            if (moodslc.value === 'start'){
-                url = 'http://127.0.0.1:9000/driver/startdrive'
+            if (moodslc.value === 'Start'){
+                url = '/driver/startdrive'
                 divsimopt.style.display = 'none';
-            }else if (moodslc.value === 'finish'){
-                url = 'http://127.0.0.1:9000/driver/finishdrive'
+            }else if (moodslc.value === 'Finish'){
+                url = '/driver/finishdrive'
                 divsimopt.style.display = 'block';
+            }else if(moodslc.value === 'Pause') {
+                url = '/driver/pausedrive'
+                divsimopt.style.display = 'none';
             }
         })
 
@@ -30,21 +33,25 @@ class DriverWork extends HTMLElement {
             e.preventDefault()
             e.stopImmediatePropagation()
 
-            if (moodslc.value === 'start') {
+            if (moodslc.value === 'Start' || moodslc.value === 'Pause') {
                 body = {
                     name: form.querySelector("#name").value,
-                    numbero: form.querySelector("#idnumber"),
-                    mood: form.querySelector("#mood").value,
-                    car: form.querySelector("#car").value,
-                    km: form.querySelector("#km").value
-                }
-            } else if(moodslc.value === 'finish') {
-                body = {
-                    name: form.querySelector("#name").value,
-                    numbero: form.querySelector("#idnumber"),
+                    numero: form.querySelector("#idnumber").value,
                     mood: form.querySelector("#mood").value,
                     car: form.querySelector("#car").value,
                     km: form.querySelector("#km").value,
+                    data: null,
+                    obs: form.querySelector("#obs").value
+                }
+            } else if(moodslc.value === 'Finish') {
+                body = {
+                    name: form.querySelector("#name").value,
+                    nummero: form.querySelector("#idnumber").value,
+                    mood: form.querySelector("#mood").value,
+                    car: form.querySelector("#car").value,
+                    km: form.querySelector("#km").value,
+                    data: null,
+                    obs: form.querySelector("#obs").value,
                     money: {
                         ubermoney: divsimopt.querySelector("#uberM").value,
                         uberportagem: divsimopt.querySelector("#uberP").value,
@@ -90,8 +97,9 @@ class DriverWork extends HTMLElement {
 
                 <label for="mood">Mood</label>
                 <select name="mood" id="mood" >
-                    <option value="start">Start</option>
-                    <option value="finish">Finish</option>
+                    <option value="Start">Start</option>
+                    <option value="Finish">Finish</option>
+                    <option value="Pause">Pause</option>
                 </select>
 
                 <label for="car">Car</label>
@@ -102,6 +110,9 @@ class DriverWork extends HTMLElement {
 
                 <label for="km">Km</label>
                 <input type="text" name="km" id="km" placeholder="Km atuais...">
+
+                <label for="obs">Observações</label>
+                <input type="text" name="obs" id="obs" placeholder="Observações...">
 
                 <div id="divSimopt">
                     <label for="uberM">Uber</label>

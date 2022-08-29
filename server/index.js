@@ -1,12 +1,11 @@
 import express from 'express';
 const app = express();
-const PORT = process.env.PORT_SRV || 9000;
+const PORT = process.env.PORT_SRV || 9001;
 let state;
 
 import { database } from '../data/index.js';
 
 import fs from 'fs';
-import { allowedNodeEnvironmentFlags, nextTick } from 'process';
 const templateHtml = fs.readFileSync('./src/index.html', 'utf-8');
 app.use(express.static('./src'));
 app.use(express.json());
@@ -32,24 +31,29 @@ function server() {
 
 //Endpoints
 
-app.use('/drivers', (req, res) => {
+app.get('/drivers', (req, res) => {
     let view = templateHtml
     res.send(view)
 })
 
 import { startdrive } from '../endpoints/startdrive/index.js';
-app.post('/driver/startdrive', startdrive,(req, res) => {
+app.post('/driver/startdrive', startdrive, (req, res) => {
 
 });
 
 import { finishdrive } from '../endpoints/finishdrive/index.js';
-app.post('/driver/finishdrive', finishdrive, (req,res) => {
+app.post('/driver/finishdrive', finishdrive, (req, res) => {
 
 });
 
 import { fuelcar } from '../endpoints/fuelcar/index.js';
-app.post('/driver/fuelcar', fuelcar,(req,res)=> {
+app.post('/driver/fuelcar', fuelcar, (req, res) => {
 
+})
+
+import { pausedrive } from '../endpoints/pausedrive/index.js';
+app.post('/driver/pausedrive', pausedrive, (req, res) => {
+    
 })
 
 main()
