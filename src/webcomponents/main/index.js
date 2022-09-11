@@ -50,6 +50,10 @@ class Mainbody extends HTMLElement {
         return `
         <style>
 
+        a:hover {
+            background-color:Silver;
+        }
+
         a {
             background-color: white;
             text-decoration: none;

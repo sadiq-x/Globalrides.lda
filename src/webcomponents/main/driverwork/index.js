@@ -54,7 +54,6 @@ class DriverWork extends HTMLElement {
                     obs: form.querySelector("#obs").value,
                     money: {
                         ubermoney: divsimopt.querySelector("#uberM").value,
-                        uberportagem: divsimopt.querySelector("#uberP").value,
                         ubergrojeta: divsimopt.querySelector("#uberG").value,
                         boltmoney: divsimopt.querySelector("#boltM").value,
                         boltportagem: divsimopt.querySelector("#boltP").value,
@@ -117,7 +116,6 @@ class DriverWork extends HTMLElement {
                 <div id="divSimopt">
                     <label for="uberM">Uber</label>
                     <input type="text" name="uberM" id="uberM" placeholder="Uber money...">
-                    <input type="text" name="uberP" id="uberP" placeholder="Uber portagens...">
                     <input type="text" name="uberG" id="uberG" placeholder="Uber grojetas...">
 
                     <label for="boltM">Bolt</label>
