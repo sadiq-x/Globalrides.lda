@@ -1,3 +1,4 @@
+
 class DespesasComp extends HTMLElement {
     constructor() {
         super();
@@ -7,11 +8,28 @@ class DespesasComp extends HTMLElement {
 
     async connectedCallback() {
         const btnselect = this.shadowRoot.querySelector("#btnselect")
+        let carselect = this.shadowRoot.querySelector("#carselect")
+       
+        let url = '/'
+        let body = {}
 
-        btnselect.addEventListener("click", (e)=>{
-            e.preventDefault()
-            alert('Ok')
+        btnselect.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            console.log(carselect.value)
         })
+    }
+
+    async getCar(url, body) {
+        return fetch(url, {
+            method: "POST",
+            headers: new Headers({ 'Content-Type': 'application/json' }),
+            body: JSON.stringify(body)
+        }).then(async response => { return response.json().then((e) => { return e }) })
+    }
+
+    getTable(data){
+        
     }
 
     render() {
@@ -43,6 +61,7 @@ class DespesasComp extends HTMLElement {
             padding: 10px;
             margin-left: auto;
             margin-right: auto;
+            margin-bottom: 5px;
         }
 
         </style>

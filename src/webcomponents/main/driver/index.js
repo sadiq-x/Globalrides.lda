@@ -8,25 +8,32 @@ class DriverComp extends HTMLElement {
     async connectedCallback() {
         let driverselect = this.shadowRoot.querySelector("#driverselect")
         const btnselect = this.shadowRoot.querySelector("#btnselect")
+        
+        const divmain = this.shadowRoot.querySelector("div")
+        const tabledriver = this.shadowRoot.querySelector("#tabledriver")
 
+        if(tabledriver){
+            tabledriver.remove()
+        }
 
         let url = '/analytics/driver';
-        let body = {
-            driver: 'jose'
-        };
+        let body = {}
 
         btnselect.addEventListener('click', async (e) => {
             e.preventDefault();
             e.stopImmediatePropagation()
             body.driver = driverselect.value
             let drivers = await this.getdriver(url, body)
+            divmain.append(tabledriver)
             this.getTable(drivers)
         })
     }
 
     disconnectedCallback() {
-        const table = this.shadowRoot.querySelector("#tabledriver")
-        table.innerHTML = '';
+        const tabledriver = this.shadowRoot.querySelector("#tabledriver")
+        if(tabledriver){
+            tabledriver.remove()
+        }
     }
 
     async getdriver(url, body) {
@@ -38,8 +45,6 @@ class DriverComp extends HTMLElement {
     }
 
     getTable(data) {
-        let test
-        console.log(data)
         data.reverse()
         const table = this.shadowRoot.querySelector("#tabledriver")
 
@@ -75,18 +80,15 @@ class DriverComp extends HTMLElement {
             cell.innerHTML = "<b>Bolt grojeta</b>";
 
             for (let count in data) {
-                console.log(data[count].user.mood)
                 let soloData = data[count]
-                test = soloData
                 var tr = table.insertRow(-1);
                 var idCell = tr.insertCell(-1)
                 idCell.innerHTML = data[count]._id
                 for (let entry in soloData.user) {
-                    console.log(soloData.user[entry])
                     if (typeof soloData.user[entry] === 'object') {
-                        for (let x in test.user.money) {
+                        for (let x in soloData.user.money) {
                             var tabCell = tr.insertCell(-1);
-                            tabCell.innerHTML = test.user.money[x]
+                            tabCell.innerHTML = soloData.user.money[x]
                         }
                     } else if (typeof soloData.user[entry] !== 'object') {
                         var tabCell = tr.insertCell(-1);
@@ -125,7 +127,6 @@ class DriverComp extends HTMLElement {
             <button type="button" id="btnselect">View</button>
 
             <table id="tabledriver">
-                               
             </table>
 
         </div>
@@ -146,6 +147,7 @@ class DriverComp extends HTMLElement {
             padding: 10px;
             margin-left: auto;
             margin-right: auto;
+            margin-bottom: 5px;
         }
 
         
@@ -155,6 +157,7 @@ class DriverComp extends HTMLElement {
             margin-left: auto;
             margin-right: auto;
             border: 1px solid black;
+            width:100%;
         }
         
         </style>

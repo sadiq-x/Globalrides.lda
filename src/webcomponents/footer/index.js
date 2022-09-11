@@ -1,35 +1,49 @@
 class SiteFooter extends HTMLElement {
-    constructor(){
+    constructor() {
         super();
-        this.attachShadow({mode:'open'});
+        this.attachShadow({ mode: 'open' });
         this.render();
     }
 
-    connectedCallback(){
-            let date = new Date();
-            let dateresult = date.toUTCString()
-
-            const datenow = this.shadowRoot.querySelector("#datenow")
-            datenow.innerHTML = dateresult
+    connectedCallback() {
+        let datenow = this.shadowRoot.querySelector("#datenow")
+        this.clockAutomatic(datenow)
     }
 
-    render(){
+    clockAutomatic(datenow){
+        datenow.innerHTML = Date()
+        setInterval(() => { datenow.innerHTML = Date() }, 1000)
+    }
+
+    render() {
         this.shadowRoot.innerHTML = this.getTemplate()
     }
 
-    getTemplate(){
+    getTemplate() {
         return `
         <div>
-            <h5 id="datenow"> </h5>
+        <div id="datenow"> </div>
+        <h6> Develop by <a href="">Sadiq.org</a></h6>
         </div>
         ${this.getStyles()}
         `
     }
 
-    getStyles(){
-        return`
+    getStyles() {
+        return `
         <style>
 
+        h6 {
+            font-family: cursive;
+            font-style: italic;
+            color: red;
+        } 
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        
         </style>
         `
     }

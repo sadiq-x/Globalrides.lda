@@ -28,11 +28,6 @@ class NavbarBody extends HTMLElement {
         return `
         <style>
 
-        div {
-            margin-left: 25%;
-            margin-right: 25%;
-        }
-        
         #driver, #viaturas, #despesas, #reload{
             border: 1px solid black;
             padding: 10px;

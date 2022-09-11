@@ -18,16 +18,15 @@ main {
     margin-top: 5px;
     margin-left: 10%;
     margin-right: 10%;
-    margin-bottom: 25px;
+    margin-bottom: 5%;
     text-align: center;
 }
 
 footer {
-    position: fixed;
+    position: fixed ;
     left: 0;
     bottom: 0;
     width: 100%; 
-    padding: 18px;
     background-color: Gainsboro;
     text-align: center;
     border: 1px solid black;
