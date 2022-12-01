@@ -46,14 +46,14 @@ app.post('/driver/finishdrive', finishdrive, (req, res) => {
 
 });
 
-import { fuelcar } from '../endpoints/fuelcar/index.js';
-app.post('/driver/fuelcar', fuelcar, (req, res) => {
-
-})
-
 import { pausedrive } from '../endpoints/pausedrive/index.js';
 app.post('/driver/pausedrive', pausedrive, (req, res) => {
     
+})
+
+import { fuelcar } from '../endpoints/fuelcar/index.js';
+app.post('/driver/fuelcar', fuelcar, (req, res) => {
+
 })
 
 main()
