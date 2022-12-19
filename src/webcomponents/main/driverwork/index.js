@@ -11,19 +11,19 @@ class DriverWork extends HTMLElement {
 
         const divsimopt = this.shadowRoot.querySelector("#divSimopt")
         const moodslc = this.shadowRoot.querySelector("#mood")
-        
+
         let url = '/driver/startdrive';
         let body;
 
-        moodslc.addEventListener('click', (e)=> {
+        moodslc.addEventListener('click', (e) => {
             e.preventDefault()
-            if (moodslc.value === 'Start'){
+            if (moodslc.value === 'Start') {
                 url = '/driver/startdrive'
                 divsimopt.style.display = 'none';
-            }else if (moodslc.value === 'Finish'){
+            } else if (moodslc.value === 'Finish') {
                 url = '/driver/finishdrive'
                 divsimopt.style.display = 'block';
-            }else if(moodslc.value === 'Pause') {
+            } else if (moodslc.value === 'Pause') {
                 url = '/driver/pausedrive'
                 divsimopt.style.display = 'none';
             }
@@ -32,7 +32,6 @@ class DriverWork extends HTMLElement {
         btform.addEventListener('click', (e) => {
             e.preventDefault()
             e.stopImmediatePropagation()
-
             if (moodslc.value === 'Start' || moodslc.value === 'Pause') {
                 body = {
                     name: form.querySelector("#name").value,
@@ -43,7 +42,7 @@ class DriverWork extends HTMLElement {
                     data: null,
                     obs: form.querySelector("#obs").value
                 }
-            } else if(moodslc.value === 'Finish') {
+            } else if (moodslc.value === 'Finish') {
                 body = {
                     name: form.querySelector("#name").value,
                     nummero: form.querySelector("#idnumber").value,
@@ -61,15 +60,19 @@ class DriverWork extends HTMLElement {
                     }
                 }
             }
-            if (body.name && body.km){
-                fetch(url, {
-                    method: "POST",
-                    headers: new Headers({"Content-Type": "application/json"}),
-                    body: JSON.stringify(body)
-                }).then((e)=>{
-                    console.log(e)
-                })
-            }else{
+            if (body.name && body.km && body.numero) {
+                try {
+                    fetch(url, {
+                        method: "POST",
+                        headers: new Headers({ "Content-Type": "application/json" }),
+                        body: JSON.stringify(body)
+                    }).then((e) => {
+                        //console.log(e)
+                        alert(`Estado do registo ${e.ok}`)
+                    })
+                } catch (error) {
+                }
+            } else {
                 alert('Formulario incompleto')
             }
             form.reset()
@@ -97,8 +100,8 @@ class DriverWork extends HTMLElement {
                 <label for="mood">Mood</label>
                 <select name="mood" id="mood" >
                     <option value="Start">Start</option>
-                    <option value="Finish">Finish</option>
                     <option value="Pause">Pause</option>
+                    <option value="Finish">Finish</option>
                 </select>
 
                 <label for="car">Car</label>
