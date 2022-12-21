@@ -1,11 +1,11 @@
 import './driverwork/index.js';
 import './fuelcars/index.js'
+
 class Mainbody extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
         this.render();
-
     }
 
     connectedCallback() {
@@ -49,7 +49,6 @@ class Mainbody extends HTMLElement {
     getStyles() { //Styles template
         return `
         <style>
-
         a:hover {
             background-color:Silver;
         }
@@ -71,7 +70,6 @@ class Mainbody extends HTMLElement {
             margin-top: 25px;
         }
         
-
         </style>
         `
     }

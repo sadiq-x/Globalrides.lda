@@ -9,7 +9,7 @@ class FuelCars extends HTMLElement {
         const btform = this.shadowRoot.querySelector("#btformsend")
         const form = this.shadowRoot.querySelector("#fuelcars")
 
-        const url = 'driver/fuelcar';
+        const url = '/driver/fuelcar';
         let body;
 
         btform.addEventListener('click', (e)=> {
@@ -17,7 +17,8 @@ class FuelCars extends HTMLElement {
             e.stopImmediatePropagation()
             body = {
                 car: form.querySelector("#car").value,
-                litre: form.querySelector("#litre").value
+                litre: form.querySelector("#litre").value,
+                data: null
             }
             if (body.litre){
                 fetch(url, {
@@ -25,7 +26,8 @@ class FuelCars extends HTMLElement {
                     headers: new Headers({"Content-Type": "application/json"}),
                     body: JSON.stringify(body) 
                 }).then((e)=>{
-                    console.log(e)
+                    //console.log(e)
+                    alert(`Estado do registo ${e.ok}`)
                 })
             }else{
                 alert('Formulario incompleto')

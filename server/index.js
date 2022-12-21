@@ -28,10 +28,8 @@ function server() {
     }
 }
 
-
 //Endpoints
-
-app.get('/drivers', (req, res) => {
+app.get('/', (req, res) => {
     let view = templateHtml
     res.send(view)
 })
