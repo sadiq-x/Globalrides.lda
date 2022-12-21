@@ -1,4 +1,4 @@
-import { getClient } from "/users/rafael/desktop/globalride-driverapi/data/index.js";
+import { getClient } from "/home/rafa/Área de Trabalho/gr-gitrepo/data/index.js"
 
 export default class FuelCar {
     constructor(){

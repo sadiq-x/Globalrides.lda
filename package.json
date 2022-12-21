@@ -23,5 +23,8 @@
     "type": "git",
     "url": "git+https://github.com/sadiq-x/Globalrides.lda.git"
   },
-  "homepage": "https://github.com/sadiq-x/Globalrides.lda#readme"
+  "homepage": "https://github.com/sadiq-x/Globalrides.lda#readme",
+  "bugs": {
+    "url": "https://github.com/sadiq-x/Globalrides.lda/issues"
+  }
 }

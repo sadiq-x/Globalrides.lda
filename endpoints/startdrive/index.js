@@ -1,5 +1,4 @@
-import Driver from "/Users/Rafael/Desktop/globalride-driverapi/driver/index.js";
-
+import Driver from "/home/rafa/Área de Trabalho/gr-gitrepo/driver/index.js"
 export async function startdrive(req, res) {
     const driver = new Driver()
     driver.setStartDriver(req.body)
