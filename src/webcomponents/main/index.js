@@ -31,8 +31,6 @@ class SiteBody extends HTMLElement{
 
         Vnavbar.addEventListener('click', (e)=> {
             e.preventDefault()
-            componentsoutput.removeChild(componentsoutput.lastChild)
-            componentsoutput.appendChild(driverComponent)
         })
 
         Despesaspnavbar.addEventListener('click', (e)=>{
