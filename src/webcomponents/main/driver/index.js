@@ -8,11 +8,11 @@ class DriverComp extends HTMLElement {
     async connectedCallback() {
         let driverselect = this.shadowRoot.querySelector("#driverselect")
         const btnselect = this.shadowRoot.querySelector("#btnselect")
-        
+
         const divmain = this.shadowRoot.querySelector("div")
         const tabledriver = this.shadowRoot.querySelector("#tabledriver")
 
-        if(tabledriver){
+        if (tabledriver) {
             tabledriver.remove()
         }
 
@@ -31,7 +31,7 @@ class DriverComp extends HTMLElement {
 
     disconnectedCallback() {
         const tabledriver = this.shadowRoot.querySelector("#tabledriver")
-        if(tabledriver){
+        if (tabledriver) {
             tabledriver.remove()
         }
     }
@@ -81,6 +81,7 @@ class DriverComp extends HTMLElement {
 
             for (let count in data) {
                 let soloData = data[count]
+                soloData.user.data = new Date(soloData.user.data).toUTCString()
                 var tr = table.insertRow(-1);
                 var idCell = tr.insertCell(-1)
                 idCell.innerHTML = data[count]._id
@@ -93,22 +94,19 @@ class DriverComp extends HTMLElement {
                     } else if (typeof soloData.user[entry] !== 'object') {
                         var tabCell = tr.insertCell(-1);
                         tabCell.innerHTML = soloData.user[entry]
-                        if (soloData.user[entry] === 'Start'){
+                        if (soloData.user[entry] === 'Start') {
                             tabCell.style.backgroundColor = 'green'
                             var brRow = table.insertRow(-1)
                             brRow.innerHTML = "<p></p>"
-                            
-                        }else if(soloData.user[entry] === 'Finish'){
+
+                        } else if (soloData.user[entry] === 'Finish') {
                             tabCell.style.backgroundColor = 'red'
-                        }else if(soloData.user[entry] === 'Pause'){
+                        } else if (soloData.user[entry] === 'Pause') {
                             tabCell.style.backgroundColor = 'yellow'
                         }
-                        
                     }
-                    
                 }
             }
-
         }
     }
 
@@ -120,7 +118,7 @@ class DriverComp extends HTMLElement {
         return `
         <div>
             <select id="driverselect">
-                <option value="jose">Jose</option>
+                <option value="Joana">Jose</option>
                 <option value="Manuel">Manuel</option>
             </select>
 
