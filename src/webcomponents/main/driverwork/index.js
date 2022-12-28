@@ -45,7 +45,7 @@ class DriverWork extends HTMLElement {
             } else if (moodslc.value === 'Finish') {
                 body = {
                     name: form.querySelector("#name").value,
-                    nummero: form.querySelector("#idnumber").value,
+                    numero: form.querySelector("#idnumber").value,
                     mood: form.querySelector("#mood").value,
                     car: form.querySelector("#car").value,
                     km: form.querySelector("#km").value,
@@ -106,8 +106,8 @@ class DriverWork extends HTMLElement {
 
                 <label for="car">Car</label>
                 <select type="text" name="car" id="car">
-                    <option value="88-59-po">88-59-PO</option>
-                    <option value="88-59-po">88-59-PO</option>
+                    <option value="AO-35-ZR">Dacia</option>
+                    <option value="33-VB-29">Renault</option>
                 </select>
 
                 <label for="km">Km</label>

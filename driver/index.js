@@ -31,7 +31,7 @@ export default class Driver {
 
     setPauseDriver(driver) {
         this.doc.user = driver
-        this.doc.user.data = new Date.now()
+        this.doc.user.data =  Date.now()
     }
 
     //Send a driver data to database and chose the right collection.

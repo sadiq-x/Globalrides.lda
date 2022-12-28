@@ -47,8 +47,8 @@ class FuelCars extends HTMLElement {
                 
                 <label for="car">Car</label>
                 <select name="car" id="car" >
-                    <option value="1111">1111</option>
-                    <option value="2222">2222</option>
+                    <option value="AO-35-ZR-despesas">Dacia</option>
+                    <option value="33-VB-29-despesas">Renault</option>
                 </select>
 
                 <label for="litre">Litre</label>
