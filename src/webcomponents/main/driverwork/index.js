@@ -92,13 +92,16 @@ class DriverWork extends HTMLElement {
         <div>
             <form id="driver-input">
                 <label for="name">Nome</label>
-                <input type="text" name="name" id="name" placeholder="Your name...">
+                <select name="name" id="name">
+                    <option value="Jose">Jose</option>
+                    <option value="Manuel">Manuel</option>
+                </select>
 
                 <label for="idnumber">Numero pessoal</label>
                 <input type="text" name="idnumber" id="idnumber" placeholder="Your name...">
 
                 <label for="mood">Mood</label>
-                <select name="mood" id="mood" >
+                <select name="mood" id="mood">
                     <option value="Start">Start</option>
                     <option value="Pause">Pause</option>
                     <option value="Finish">Finish</option>

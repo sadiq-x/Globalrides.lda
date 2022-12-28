@@ -1,5 +1,4 @@
-import Driver from "/home/rafa/Área de Trabalho/gr-gitrepo/driver/index.js";
-
+import Driver from "../../driver/index.js"
 export async function pausedrive(req,res){
     const driver = new Driver()
     driver.setPauseDriver(req.body)
