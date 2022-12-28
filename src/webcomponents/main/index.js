@@ -3,6 +3,7 @@ import './carview-renault/index.js';
 import './navbar/index.js'
 import './driver/index.js'
 import './despesas/index.js'
+import './viaturas/index.js'
 class SiteBody extends HTMLElement{
     constructor(){
         super();
@@ -19,6 +20,7 @@ class SiteBody extends HTMLElement{
 
         const driverComponent = document.createElement('driver-component')
         const despesasComponent = document.createElement('despesas-component')
+        const viaturasComponent = document.createElement('viaturas-component')
 
         const componentsoutput = this.shadowRoot.querySelector("#componentsoutput")
 
@@ -31,6 +33,8 @@ class SiteBody extends HTMLElement{
 
         Vnavbar.addEventListener('click', (e)=> {
             e.preventDefault()
+            componentsoutput.removeChild(componentsoutput.lastChild)
+            componentsoutput.appendChild(viaturasComponent)
         })
 
         Despesaspnavbar.addEventListener('click', (e)=>{

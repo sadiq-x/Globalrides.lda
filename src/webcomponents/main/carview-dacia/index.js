@@ -11,7 +11,7 @@ class CarviewRenault extends HTMLElement {
         
         const url = '/analytics/car/km';
         const body = {
-            car: 'dacialogdy'
+            car: 'AO-35-ZR'
         }
 
         kmreload.textContent = await this.getKm(url,body)
@@ -29,7 +29,7 @@ class CarviewRenault extends HTMLElement {
             method: "POST",
             headers: new Headers({ 'Content-Type': 'application/json' }),
             body: JSON.stringify(body)
-        }).then( async response => { return response.json().then((e)=>{return e.Km}) })
+        }).then( async response => { return response.json().then((e)=>{return e.caropt.km}) })
     }
 
     render() {
@@ -44,7 +44,7 @@ class CarviewRenault extends HTMLElement {
                 <li> <img src="./images/dacialogdy_carlogo.png" width="250" height="135" alt="Dacia Logdy" title="Dacia Logdy"></li>
             </ul>
             <ul id="listmatriculas">
-                <li>XX-XX-XX</li> 
+                <li>AO-35-ZR</li> 
             </ul>
             <ul id="listkm">
                 <li id="kmreload">awaiting</li>

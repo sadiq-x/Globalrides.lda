@@ -4,18 +4,21 @@ export default class Analytics {
     constructor() {
         this.doc = {
             driver: null,
-            car: null
+            car: null,
         };
     }
 
+    /**Function setDriverData, set a driver to search on colection */
     setDriverData(driver) {
         this.doc.driver = driver
     }
 
+    /**Function setCarData, set a car to search on colection */
     setCarData(car) {
         this.doc.car = car
     }
 
+    /**Function getdatadriver gives all data o driver*/
     async getdatadriver() {
         const driver = this.doc.driver
         const collection = await getClient().collection(driver)
@@ -28,6 +31,19 @@ export default class Analytics {
         
     }
 
+    /**Function getdatadriverDatequery gives data of driver from greater date*/
+    async getdatadriverDatequery(date) {
+        const driver = this.doc.driver
+        const collection = await getClient().collection(driver)
+        let result = await collection.find({"user.data" : {$gt : date}}).toArray({})
+        if (result) {
+            return result
+        } else {
+            return false
+        }
+    }
+
+    /**Function getdatacar, get the data from car name colection*/
     async getdatacar() {
         const car = this.doc.car
         const collection = await getClient().collection(car)
@@ -39,6 +55,7 @@ export default class Analytics {
         }
     }
 
+    /**Function getKmCar, get the actual km registry in database*/
     async getKmCar() {
         const car = this.doc.car
         const collection = await getClient().collection(car)

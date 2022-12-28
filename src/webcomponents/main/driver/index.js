@@ -8,25 +8,28 @@ class DriverComp extends HTMLElement {
     async connectedCallback() {
         let driverselect = this.shadowRoot.querySelector("#driverselect")
         const btnselect = this.shadowRoot.querySelector("#btnselect")
-
+        let datequery = this.shadowRoot.querySelector("#datequery")
         const divmain = this.shadowRoot.querySelector("div")
         const tabledriver = this.shadowRoot.querySelector("#tabledriver")
+       
+        let url = '/analytics/driver';
+        let body = {}
 
         if (tabledriver) {
             tabledriver.remove()
         }
-
-        let url = '/analytics/driver';
-        let body = {}
-
+        
         btnselect.addEventListener('click', async (e) => {
             e.preventDefault();
             e.stopImmediatePropagation()
+            const datereverse = new Date(datequery.value)
+            datequery.value = null
             body.driver = driverselect.value
-            let drivers = await this.getdriver(url, body)
+            body.datequery = datereverse.getTime()
+            let drivers = await this.getDriver(url, body)
             divmain.append(tabledriver)
             this.getTable(drivers)
-        })
+        })  
     }
 
     disconnectedCallback() {
@@ -36,7 +39,7 @@ class DriverComp extends HTMLElement {
         }
     }
 
-    async getdriver(url, body) {
+    async getDriver(url, body) {
         return fetch(url, {
             method: "POST",
             headers: new Headers({ 'Content-Type': 'application/json' }),
@@ -49,7 +52,7 @@ class DriverComp extends HTMLElement {
         const table = this.shadowRoot.querySelector("#tabledriver")
 
         if (data) {
-            table.innerHTML = '';
+            table.innerHTML = null
             var header = table.createTHead();
             var row = header.insertRow(-1);
             var cell = row.insertCell(-1);
@@ -118,12 +121,11 @@ class DriverComp extends HTMLElement {
         return `
         <div>
             <select id="driverselect">
-                <option value="Joana">Jose</option>
+                <option value="Jose">Jose</option>
                 <option value="Manuel">Manuel</option>
             </select>
-
+            <input type="date" id="datequery"></p>
             <button type="button" id="btnselect">View</button>
-
             <table id="tabledriver">
             </table>
 
@@ -147,8 +149,6 @@ class DriverComp extends HTMLElement {
             margin-right: auto;
             margin-bottom: 5px;
         }
-
-        
 
         #tabledriver {
             margin-top: 10px;
