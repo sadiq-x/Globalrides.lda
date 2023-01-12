@@ -10,6 +10,8 @@ class DespesasComp extends HTMLElement {
         const btnselect = this.shadowRoot.querySelector("#btnselect")
         const divmain = this.shadowRoot.querySelector("div")
         const tablecar = this.shadowRoot.querySelector("#tablecar")
+        let datequery = this.shadowRoot.querySelector("#datequery")
+
        
         let url = '/analytics/car';
         let body = {}
@@ -21,7 +23,10 @@ class DespesasComp extends HTMLElement {
         btnselect.addEventListener('click', async (e) => {
             e.preventDefault();
             e.stopImmediatePropagation()
+            const datereverse = new Date(datequery.value)
+            datequery.value = null
             body.car = carselect.value
+            body.datequery = datereverse.getTime()
             let car = await this.getCar(url, body)
             divmain.append(tablecar)
             this.getTable(car)
@@ -81,6 +86,7 @@ class DespesasComp extends HTMLElement {
                 <option value="AO-35-ZR-despesas">Dacia</option>
                 <option value="33-VB-29-despesas">Renault</option>
             </select>
+            <input type="date" id="datequery"></p>
             <button type="button" id="btnselect">View</button>
             <table id="tablecar">
             </table>

@@ -67,6 +67,18 @@ export default class Analytics {
         }
     }
 
+    /**Function getdatacar, get the data from car name colection filtred  by data*/
+    async getdatacarFiltred(date) {
+        const car = this.doc.car
+        const collection = await getClient().collection(car)
+        let result = await collection.find({"caropt.data":{$gte : date}}).toArray()
+        if (result) {
+            return result
+        } else {
+            return false
+        }
+    }
+
     /**Function getKmCar, get the actual km registry in database*/
     async getKmCar() {
         const car = this.doc.car
