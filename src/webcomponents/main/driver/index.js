@@ -8,28 +8,32 @@ class DriverComp extends HTMLElement {
     async connectedCallback() {
         let driverselect = this.shadowRoot.querySelector("#driverselect")
         const btnselect = this.shadowRoot.querySelector("#btnselect")
-        let datequery = this.shadowRoot.querySelector("#datequery")
+        let datequery1 = this.shadowRoot.querySelector("#datequery1")
+        let datequery2 = this.shadowRoot.querySelector("#datequery2")
         const divmain = this.shadowRoot.querySelector("div")
         const tabledriver = this.shadowRoot.querySelector("#tabledriver")
-       
+
         let url = '/analytics/driver';
         let body = {}
 
         if (tabledriver) {
             tabledriver.remove()
         }
-        
+
         btnselect.addEventListener('click', async (e) => {
             e.preventDefault();
             e.stopImmediatePropagation()
-            const datereverse = new Date(datequery.value)
-            datequery.value = null
+            const datereverse1 = new Date(datequery1.value)
+            const datereverse2 = new Date(datequery2.value)
+            datequery1.value = null
+            datequery2.value = null
             body.driver = driverselect.value
-            body.datequery = datereverse.getTime()
+            body.datequery1 = datereverse1.getTime()
+            body.datequery2 = datereverse2.getTime()
             let drivers = await this.getDriver(url, body)
             divmain.append(tabledriver)
             this.getTable(drivers)
-        })  
+        })
     }
 
     disconnectedCallback() {
@@ -124,7 +128,8 @@ class DriverComp extends HTMLElement {
                 <option value="Jose">Jose</option>
                 <option value="Manuel">Manuel</option>
             </select>
-            <input type="date" id="datequery"></p>
+            <input type="date" id="datequery1">
+            <input type="date" id="datequery2"></p>
             <button type="button" id="btnselect">View</button>
             <table id="tabledriver">
             </table>

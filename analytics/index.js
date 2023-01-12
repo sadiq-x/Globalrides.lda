@@ -32,10 +32,22 @@ export default class Analytics {
     }
 
     /**Function getdatadriverDatequery gives data of driver from greater date*/
-    async getdatadriverDatequery(date) {
+    async getdatadriverDatequery1(date) {
         const driver = this.doc.driver
         const collection = await getClient().collection(driver)
-        let result = await collection.find({"user.data" : {$gt : date}}).toArray({})
+        let result = await collection.find({"user.data" : {$gte : date}}).toArray({})
+        if (result) {
+            return result
+        } else {
+            return false
+        }
+    }
+
+    /**Function getdatadriverDatequery gives two data of driver from greater date*/
+    async getdatadriverDatequery2(date1,date2) {
+        const driver = this.doc.driver
+        const collection = await getClient().collection(driver)
+        let result = await collection.find({"user.data" : {$gte : date1, $lte : date2}}).toArray({})
         if (result) {
             return result
         } else {
