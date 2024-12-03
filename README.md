@@ -11,19 +11,16 @@ Module.
 # Npm dependencies:
 Express,
 Mongodb,
-Dotenv.
-
-# Running server npm  dependencies:
+Dotenv,
 nodemoon.
 
 # Endpoints:
 ### Available endpoints:  
-``` /analytics/car ```    
-\\Get the analytics of car from database \\.
-``` /analytics/driver ```  
-\\Get the analytics of driver from database \\.
-``` /analytics/car/km ``` 
-\\Get the analytics of car km from from database \\.
+``` /analytics/car ```     Get the analytics of car from database. 
+
+``` /analytics/driver ```  Get the analytics of driver from database. 
+
+``` /analytics/car/km ```  Get the analytics of car km from from database.
 
 # Variable environment:
 ```
